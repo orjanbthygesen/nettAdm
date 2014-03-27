@@ -1,0 +1,115 @@
+package assignment15;
+
+//import java.io.DataOutputStream;
+//import java.io.File;
+//import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+//import java.util.concurrent.TimeUnit;
+//
+//import org.snmp4j.smi.IpAddress;
+//
+//import snmpAlert.snmpAlert;
+import snmpAlert.snmpClient;
+
+
+
+public class SNMPManager {
+
+	private static String[] targetAddr = {"129.241.209.8","129.241.209.7"};
+
+	static List<Integer> traffic0 = new ArrayList<Integer>();
+	static List<Integer> traffic1 = new ArrayList<Integer>();
+	static List<String> time = new ArrayList<String>();
+
+	private static int amount1;
+	private static int amount0;
+
+	private static String start;
+	private static String end;
+
+	public static final String DATE_FORMAT_NOW = "HH:mm";
+
+	public static String now() {
+	    Calendar cal = Calendar.getInstance();
+	    SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+	    return sdf.format(cal.getTime());
+	  }
+
+	public static int getSum(List<Integer> tab){
+		int sum=0;
+		for(int i=0; i<tab.size(); i++){
+			sum += tab.get(i);
+		}		
+		return sum;
+	}
+	public static void getInPackets() {		
+		snmpClient alert0 = new snmpClient(targetAddr[0]);
+		snmpClient alert1 = new snmpClient(targetAddr[1]);
+
+		try {
+			int packets0 = alert0.getInPackets();
+			int diff0 = packets0-amount0;
+			traffic0.add(diff0);
+			amount0 += diff0;			
+
+			int packets1 = alert1.getInPackets();
+			int diff1 = packets1-amount1;
+			traffic1.add(diff1);
+			amount1 += diff1;	
+		
+			time.add(now());
+			
+			System.out.println(now()+"   Traffic 0: "+diff0+"   Traffic 1: "+diff1);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void main(String[] args) throws IOException {
+		
+		final snmpClient alert0 = new snmpClient(targetAddr[0]);
+		final snmpClient alert1 = new snmpClient(targetAddr[1]);
+
+		Timer timer = new Timer();
+		
+		TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				 try {
+					amount0 = alert0.getInPackets();
+					amount1 = alert1.getInPackets();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+								 
+				 System.out.println(amount0);
+				 System.out.println(amount1);
+				 
+				 String magnus = Integer.toString(amount0);
+				 String orjan = Integer.toString(amount1);
+				 
+				 String textToSend = "Agent-1: "+magnus+" - Agent-2: "+orjan;
+				 SendEmail.send(textToSend);
+			}
+		};
+		
+		Date date = new Date();
+		long timeBeetweenExecution = 60000;
+		
+		timer.schedule(timerTask, date, timeBeetweenExecution);	
+	
+	}
+}
