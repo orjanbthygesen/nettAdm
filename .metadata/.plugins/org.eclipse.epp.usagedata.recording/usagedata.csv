@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.egit.ui,1.3.0.201202151440-r,"org.eclipse.egit.ui",1395915938695
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.newWizard",1395915939525
+started,bundle,org.eclipse.jdt.apt.core,3.3.500.v20110420-1015,"org.eclipse.jdt.apt.core",1395915939647
+started,bundle,org.eclipse.jdt.apt.pluggable.core,1.0.400.v20110305-1450,"org.eclipse.jdt.apt.pluggable.core",1395915939664
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916019489
+started,bundle,org.eclipse.compare.core,3.5.200.I20110208-0800,"org.eclipse.compare.core",1395916020928
+started,bundle,org.eclipse.compare,3.5.202.R37x_v20111109-0800,"org.eclipse.compare",1395916020933
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916025661
+error,log,,,"Failed to detect which repository to use",1395916026611
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916041037
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916042534
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916220096
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916225618
+executed,command,org.eclipse.ltk.ui.refactoring,3.6.0.v20110928-1453,"org.eclipse.ltk.ui.refactoring.commands.deleteResources",1395916229987
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.delete",1395916229987
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916241189
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916242052
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916264977
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916265736
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.newWizard",1395916272008
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916272018
+error,log,,,"Could not write metadata for '/'.",1395916272445
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916272454
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916275850
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1395916279054
